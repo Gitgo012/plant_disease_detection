@@ -47,7 +47,7 @@ const ImageUploader = ({ onResult, onAfterPredict }) => {
 		formData.append("file", image);
 
 		try {
-			const res = await fetch("http://localhost:8000/predict", {
+			const res = await fetch("https://daring-transformation-production.up.railway.app/", {
 				method: "POST",
 				body: formData,
 			});
