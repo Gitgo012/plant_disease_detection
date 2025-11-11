@@ -8,7 +8,7 @@ app = FastAPI()
 # CORS setup
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["https://daring-transformation-production.up.railway.app"],  # Replace with frontend URL after deployment
+    allow_origins=["https://plantdiseasedetection.up.railway.app"],  # Replace with frontend URL after deployment
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
