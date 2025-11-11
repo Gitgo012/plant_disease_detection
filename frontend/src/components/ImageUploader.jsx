@@ -47,7 +47,7 @@ const ImageUploader = ({ onResult, onAfterPredict }) => {
 		formData.append("file", image);
 
 		try {
-			const res = await fetch("https://plantdiseasedetection-production-cd10.up.railway.app/", {
+			const res = await fetch("https://plantdiseasedetection-production-cfd4.up.railway.app/", {
 				method: "POST",
 				body: formData,
 			});
