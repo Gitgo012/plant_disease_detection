@@ -1,14 +1,15 @@
-# Plant Disease Detection
+# Plant Disease Detection Web Application
 
-An end-to-end app to detect plant diseases from leaf images. The FastAPI backend serves a trained model, and the Vite + React frontend provides a beautiful, responsive UI with drag-and-drop uploads and instant predictions.
+An end-to-end app to detect plant diseases from leaf images. The FastAPI backend serves a trained model, and the Vite + React frontend provides a beautiful, responsive UI with drag-and-drop uploads and instant predictions. The model used is a CNN model trained to generate predictions on 3 classes of leaves (Healthy, Powdery and Rusty). The repositort also includes deployment of the web-app on the Railway infrastructure platform. The frontend and backend are hosted as seperate services with environment variables configured in the Railway dashboard.
 
 ## Features
-- AI-powered disease prediction with confidence score
+- Has a high accuracy of around 96% in classification across 3 categories of leaves (Healthy, Rusty and Powdery)
+- CNN-powered disease prediction with confidence score
 - Drag-and-drop image upload with live preview
 - Smooth scroll to results, history of recent predictions
 - Simple hash-based routing with an About page
-- Tailwind CSS styling and Inter font for clean typography
-
+- Tailwind CSS styling
+  
 ## Tech Stack
 - Backend: FastAPI (Python), TensorFlow/Keras model
 - Frontend: React 19, Vite, Tailwind CSS v4
