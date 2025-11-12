@@ -1,99 +1,66 @@
-# Plant Disease Detection Web Application
+This repository contains the code and resources for a plant disease classification project using Convolutional Neural Networks (CNNs) with TensorFlow/Keras.
 
-An end-to-end app to detect plant diseases from leaf images. The FastAPI backend serves a trained model, and the Vite + React frontend provides a beautiful, responsive UI with drag-and-drop uploads and instant predictions. The model used is a CNN model trained to generate predictions on 3 classes of leaves (Healthy, Powdery and Rusty). The repositort also includes deployment of the web-app on the Railway infrastructure platform. The frontend and backend are hosted as seperate services with environment variables configured in the Railway dashboard.
+## Dataset
 
-## Features
-- Has a high accuracy of around 96% in classification across 3 categories of leaves (Healthy, Rusty and Powdery)
-- CNN-powered disease prediction with confidence score
-- Drag-and-drop image upload with live preview
-- Smooth scroll to results, history of recent predictions
-- Simple hash-based routing with an About page
-- Tailwind CSS styling
-  
-## Tech Stack
-- Backend: FastAPI (Python), TensorFlow/Keras model
-- Frontend: React 19, Vite, Tailwind CSS v4
+The model was trained and evaluated on a custom dataset containing images of healthy and diseased plant leaves. The dataset is organized into `Train`, `Validation`, and `Test` directories, with subdirectories for each class (e.g., 'Healthy', 'Powdery', 'Rust').
 
-## Prerequisites
-- Python 3.10+
-- Node.js 18+ and npm (or yarn/pnpm)
+*   **Training Set**: Contains images used to train the model.
+*   **Validation Set**: Used for monitoring training performance and tuning hyperparameters.
+*   **Test Set**: Used for final evaluation of the model's performance on unseen data.
 
-## Project Structure
-```
-Plant_Disease_Detection/
-├─ backend/
-│  ├─ main.py                 # FastAPI app with /predict endpoint
-│  ├─ model.py                # Model loading/inference helpers
-│  ├─ saved_model/            # Model weights and class names
-│  └─ requirements.txt
-├─ frontend/
-│  ├─ index.html
-│  ├─ src/
-│  │  ├─ App.jsx
-│  │  ├─ About.jsx
-│  │  ├─ main.jsx
-│  │  └─ components/
-│  │     └─ ImageUploader.jsx
-│  ├─ tailwind.css
-│  └─ package.json
-└─ .gitignore
-```
+## Model Architecture
 
-## Setup
+The classification model is a Convolutional Neural Network (CNN) built using TensorFlow's Keras API. It consists of several convolutional layers, max-pooling layers, a flatten layer, a dense layer, and a dropout layer to prevent overfitting. The final layer uses a softmax activation function for multi-class classification.
 
-### 1) Backend (FastAPI)
-From the `backend` directory:
+## Technologies Used
 
-```bash
-python -m venv .venv
-# Windows
-.venv\Scripts\activate
-# macOS/Linux
-source .venv/bin/activate
-
-pip install -r requirements.txt
-
-# Run the API (reload for dev)
-uvicorn main:app --reload --port 8000
-```
-
-This starts the API at `http://localhost:8000` with the `POST /predict` endpoint.
-
-### 2) Frontend (Vite + React)
-From the `frontend` directory:
-
-```bash
-npm install
-npm run dev
-```
-
-The app runs at `http://localhost:5173` (default Vite port).
-
-## Usage
-1. Start the backend (port 8000).
-2. Start the frontend.
-3. Open the app in your browser.
-4. Drag-and-drop or select a leaf image to get a prediction and confidence score.
-
-Note: The frontend expects the API at `http://localhost:8000/predict`. If you change the backend URL/port, update the fetch call in `frontend/src/components/ImageUploader.jsx`.
-
-## API
-- `POST /predict`
-  - Body: multipart/form-data with `file` (image)
-  - Response: `{ "prediction": string, "confidence": number }`
-
-## Environment
-- If you need environment variables, create a `.env` (ignored by git). Provide a `.env.example` for reference if needed.
-
-## Development Notes
-- Tailwind v4 syntax is used (e.g., `bg-linear-to-r`). If you see class warnings, ensure Tailwind is up to date and that `tailwind.css` is imported in `main.jsx`.
-- The app uses a lightweight hash router (`#/` and `#/about`) to avoid extra dependencies.
-
-## Deploy
-- Backend: Deploy FastAPI (e.g., Uvicorn/Gunicorn, Docker, or a PaaS). Ensure the model files are included.
-- Frontend: `npm run build` to produce static assets in `frontend/dist/`, then serve via any static host (Netlify, Vercel, Nginx, etc.). Update API URL for production.
-
-## License
-MIT
+*   Python 3.x
+*   TensorFlow 2.x
+*   Keras
+*   Numpy
+*   Matplotlib
+*   Seaborn
+*   Scikit-learn
 
 
+### Data Setup
+
+1.  **Download the dataset**: Place your plant disease image dataset in a directory (e.g., `data`) within your project structure.
+2.  **Directory Structure**: The dataset should be organized as follows:
+    ```
+    data/
+    ├── Train/
+    │   ├── Healthy/
+    │   ├── Powdery/
+    │   └── Rust/
+    ├── Validation/
+    │   ├── Healthy/
+    │   ├── Powdery/
+    │   └── Rust/
+    └── Test/
+        ├── Healthy/
+        ├── Powdery/
+        └── Rust/
+    ```
+
+
+## Model Training and Evaluation
+
+The model was trained for `EPOCHS = 25` epochs with `BATCH_SIZE = 32`. Early stopping, model checkpointing, and learning rate reduction on plateau were used to optimize training and prevent overfitting.
+
+### Evaluation Results
+
+After training, the model achieved the following performance on the test set:
+
+*   **Test Loss**: 0.2654
+*   **Test Accuracy**: 0.9333
+
+Detailed classification reports and confusion matrices are generated to provide insights into class-wise performance.
+
+## Usage (for predictions)
+
+To make predictions on new images:
+
+1.  Load the trained model (`plant_model_final.keras`).
+2.  Load the class names (`class_names.json`).
+3.  Use the `predict_image_path` function to get predictions for an image file.
