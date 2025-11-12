@@ -48,7 +48,7 @@ const ImageUploader = ({ onResult, onAfterPredict }) => {
 
     try {
       const apiBase =
-        import.meta.env.VITE_API_BASE_URL || "http://localhost:8000";
+        import.meta.env.VITE_API_BASE_URL;
       const apiBaseSanitized = apiBase.replace(/\/+$/, "");
       const res = await fetch(`${apiBaseSanitized}/predict`, {
         method: "POST",
