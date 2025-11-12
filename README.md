@@ -1,4 +1,4 @@
-This repository contains the code and resources for a plant disease classification project using Convolutional Neural Networks (CNNs) with TensorFlow/Keras.
+This branch contains the code and resources for a plant disease classification project using Convolutional Neural Networks (CNNs) with TensorFlow/Keras.
 
 ## Dataset
 
