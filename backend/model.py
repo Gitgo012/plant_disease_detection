@@ -2,7 +2,7 @@ import tensorflow as tf
 from tensorflow.keras.preprocessing import image
 import numpy as np
 
-MODEL_PATH = "saved_model/plant_model_final.keras"  
+MODEL_PATH = "saved_model/my_cnn_model.keras"  
 model = tf.keras.models.load_model(MODEL_PATH)
 
 # Example classes — replace with your own labels
