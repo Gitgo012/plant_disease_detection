@@ -6,7 +6,20 @@ MODEL_PATH = "saved_model/my_cnn_model.keras"
 model = tf.keras.models.load_model(MODEL_PATH)
 
 # Example classes — replace with your own labels
-classes = ['Healthy', 'Powdery', 'Rust']
+classes = [
+    "Apple Scab",
+    "Apple Black Rot",
+    "Apple Cedar Rust",
+    "Apple Healthy",
+    "Blueberry Healthy",
+    "Cherry Powdery Mildew",
+    "Cherry Healthy",
+    "Corn Gray Leaf Spot",
+    "Corn Common Rust",
+    "Corn Northern Leaf Blight",
+    "Corn Healthy"
+]
+
 
 def predict_image(image_path: str):
     img = image.load_img(image_path, target_size=(128, 128))
