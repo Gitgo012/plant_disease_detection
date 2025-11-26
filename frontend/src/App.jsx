@@ -172,6 +172,82 @@ function App() {
               </div>
             </section>
 
+            {/* MODEL PERFORMANCE METRICS */}
+            <section className="w-full max-w-6xl mt-14">
+              <h3 className="text-xl font-semibold text-green-700 text-center mb-6">
+                Model Performance
+              </h3>
+              <div className="bg-white/70 backdrop-blur-md rounded-2xl border border-green-100 p-6 shadow-lg">
+                <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+                  <div className="text-center p-4 bg-emerald-50/50 rounded-xl border border-emerald-100">
+                    <div className="text-3xl font-bold text-green-700">
+                      {Math.round(0.9311 * 100)}%
+                    </div>
+                    <div className="text-sm text-gray-600 mt-1 font-medium">
+                      Accuracy
+                    </div>
+                  </div>
+                  <div className="text-center p-4 bg-emerald-50/50 rounded-xl border border-emerald-100">
+                    <div className="text-3xl font-bold text-green-700">
+                      {Math.round(0.939 * 100)}%
+                    </div>
+                    <div className="text-sm text-gray-600 mt-1 font-medium">
+                      Precision
+                    </div>
+                  </div>
+                  <div className="text-center p-4 bg-emerald-50/50 rounded-xl border border-emerald-100">
+                    <div className="text-3xl font-bold text-green-700">
+                      {Math.round(0.9269 * 100)}%
+                    </div>
+                    <div className="text-sm text-gray-600 mt-1 font-medium">
+                      Recall
+                    </div>
+                  </div>
+                </div>
+                <p className="text-sm text-gray-600 text-center mt-4">
+                  Our CNN model has been trained and tested on a comprehensive
+                  dataset, achieving high accuracy in plant disease detection.
+                </p>
+              </div>
+            </section>
+
+            {/* SUPPORTED CLASSES */}
+            <section className="w-full max-w-6xl mt-14">
+              <h3 className="text-xl font-semibold text-green-700 text-center mb-6">
+                Supported Plant Classes
+              </h3>
+              <div className="bg-white/70 backdrop-blur-md rounded-2xl border border-green-100 p-6 shadow-lg">
+                <p className="text-gray-700 text-center mb-4">
+                  Our model can identify diseases and healthy states across <strong>11 different plant classes</strong>, covering multiple crops:
+                </p>
+                <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-3">
+                  {[
+                    "Apple Scab",
+                    "Apple Black Rot",
+                    "Apple Cedar Rust",
+                    "Apple Healthy",
+                    "Blueberry Healthy",
+                    "Cherry Powdery Mildew",
+                    "Cherry Healthy",
+                    "Corn Gray Leaf Spot",
+                    "Corn Common Rust",
+                    "Corn Northern Leaf Blight",
+                    "Corn Healthy",
+                  ].map((className, idx) => (
+                    <div
+                      key={idx}
+                      className="flex items-center gap-2 p-3 bg-emerald-50/50 rounded-lg border border-emerald-100 hover:bg-emerald-100/50 transition"
+                    >
+                      <span className="text-green-600">🌿</span>
+                      <span className="text-sm text-gray-700 font-medium">
+                        {className}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </section>
+
             {/* UPLOADER SECTION (ANCHOR) */}
             <section id="uploader" className="w-full max-w-6xl mt-16">
               <div className="max-w-2xl mx-auto bg-white/60 backdrop-blur-md rounded-3xl border border-green-100 shadow-lg hover:shadow-xl transition-all duration-300 p-8 text-center">
